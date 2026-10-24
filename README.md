@@ -1,6 +1,12 @@
 # Spare Leads
 
-Spare Leads is a React application that turns a list of available electronics components into a practical project idea using Google Gemini.
+Spare Leads is a React application that turns a list of available electronics
+components into practical project ideas using Google Gemini.
+
+## Demo
+
+Try the deployed application at
+[spareleads.vercel.app](https://spareleads.vercel.app/).
 
 ## Features
 
@@ -30,8 +36,8 @@ Spare Leads is a React application that turns a list of available electronics co
 Clone the repository and install the dependencies:
 
 ```bash
-git clone <your-repository-url>
-cd spareLeads
+git clone https://github.com/kumaranurag00748-byte/SpareLeads.git
+cd SpareLeads
 npm install
 ```
 
@@ -71,7 +77,8 @@ npm run preview
 
 1. The user adds components through the form.
 2. The `components` state stores the current component list.
-3. The user chooses **One project** or **Three options** after adding enough components.
+3. After at least four components are added, the user chooses
+   **One project** or **Three options**.
 4. The app sends the component list and requested output count to Gemini.
 5. The response is stored in the `project` state and rendered as Markdown.
 
@@ -93,7 +100,9 @@ Generating multiple options can use more quota, but the exact usage depends on h
 - Making one request that asks for three concise options is usually more efficient.
 - Longer options use more output tokens and may consume quota faster.
 
-For this project, a good approach is to request a small, fixed number of concise options in one API call, such as three options with a short summary for each. Keep the detailed build instructions limited to the option the user selects.
+This project requests three concise options in one API call, which is more
+efficient than making three separate requests. Detailed build instructions can
+then be generated for a selected option in a future enhancement.
 
 ## Security note
 
@@ -101,7 +110,16 @@ The `VITE_GEMINI_API_KEY` variable is exposed to browser code because Vite expos
 
 For production, move the Gemini request to a server-side endpoint and keep the API key in the server environment.
 
-Never commit `.env` or publish API keys. If a key has already been exposed, revoke it and create a replacement before uploading the repository.
+Never commit `.env` or publish API keys. If a key has already been exposed,
+revoke it and create a replacement before uploading the repository.
+
+## Available scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the Vite development server |
+| `npm run build` | Create an optimized production build |
+| `npm run preview` | Preview the production build locally |
 
 ## Project structure
 
@@ -114,6 +132,8 @@ spareLeads/
 │   ├── header.jsx
 │   └── main.jsx
 ├── images/
+│   └── logo.png
+├── public/
 │   └── logo.png
 ├── styles/
 │   └── main.css
@@ -128,6 +148,9 @@ spareLeads/
 ├── package.json
 └── README.md
 ```
+
+The `images/logo.png` file is used in the application header, while
+`public/logo.png` is served directly as the browser favicon.
 
 ## License
 
